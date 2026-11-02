@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashrath Kumar | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Cyber-Amber & Slate Theme Variables */
+        :root {
+            --bg-color: #0c0a09;
+            --card-bg: #1c1917;
+            --text-color: #fafaf9;
+            --text-muted: #a8a29e;
+            --accent-color: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --border-color: #292524;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #fafaf9;
+            --card-bg: #ffffff;
+            --text-color: #1c1917;
+            --text-muted: #78716c;
+            --accent-color: #d97706;
+            --accent-glow: rgba(217, 119, 6, 0.1);
+            --border-color: #e7e5e4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 1.25rem;
+        }
+
+        header {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        .hero-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .profile-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            overflow: hidden;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-content p.subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-content p.desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .badge:hover {
+            border-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        section h2 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            border-radius: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card h3 {
+            color: var(--text-color);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 20px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .contact-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-box span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-box strong {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Dashrath.dev</div>
+        <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="Switch Light/Dark Mode">🌙</button>
+    </header>
+
+    <main>
+        <div class="hero-card">
+            <div class="profile-container">
+                <img src="your-photo.jpg" alt="Dashrath Kumar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="placeholder-text" style="display:none;">Add photo (your-photo.jpg)</div>
+            </div>
+            <div class="hero-content">
+                <h1>Dashrath Kumar</h1>
+                <p class="subtitle">Innovator & Front-End Developer</p>
+                <p class="desc">Building smart hardware prototypes, decentralized energy solutions, and clean web interfaces.</p>
+            </div>
+            <div class="hero-badges">
+                <a href="mailto:dashrathkr.179@gmail.com" class="badge">✉️ dashrathkr.179@gmail.com</a>
+                <a href="mailto:itsdashrath07@gmail.com" class="badge">✉️ itsdashrath07@gmail.com</a>
+                <a href="tel:9661188369" class="badge">📞 +91 9661188369</a>
+            </div>
+        </div>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="card">
+                <p>Hello! I am Dashrath Kumar. I enjoy combining hardware electronics with software development, creating innovative prototypes, and exploring modern web technologies.</p>
+            </div>
+        </section>
+
+        <section id="career">
+            <h2>Career & Innovation</h2>
+            <div class="card">
+                <h3>Vivo Ignite: Technology & Innovation Initiative</h3>
+                <span style="color: var(--accent-color); font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Participant & Creator</span>
+                <p>Designed and submitted a decentralized autonomous street light prototype using an IR sensor, LDR, and a heavy-duty 12V truck battery, participating in dedicated design thinking workshops.</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="grid-2">
+                <div class="project-card">
+                    <h3>Autonomous Street Light System</h3>
+                    <p>A green-energy-driven prototype built with IR sensors and LDR logic for automated illumination.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>A clean, responsive developer showcase built using modern HTML and custom CSS styles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-grid">
+                <a href="mailto:dashrathkr.179@gmail.com" class="contact-box">
+                    <span>Email One</span>
+                    <strong>dashrathkr.179@gmail.com</strong>
+                </a>
+                <a href="mailto:itsdashrath07@gmail.com" class="contact-box">
+                    <span>Email Two</span>
+                    <strong>itsdashrath07@gmail.com</strong>
+                </a>
+                <a href="tel:9661188369" class="contact-box">
+                    <span>Phone</span>
+                    <strong>+91 9661188369</strong>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dashrath Kumar. Powered by Netlify</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            
+            if (htmlTag.getAttribute('data-theme') === 'dark') {
+                htmlTag.setAttribute('data-theme', 'light');
+                toggleBtn.textContent = '☀️';
+            } else {
+                htmlTag.setAttribute('data-theme', 'dark');
+                toggleBtn.textContent = '🌙';
+            }
+        }
+    </script>
+</body>
+</html>
